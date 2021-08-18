@@ -5,7 +5,7 @@ use modio::filter::prelude::*;
 use modio::games::ApiAccessOptions;
 use serenity::prelude::*;
 
-use crate::commands::prelude::*;
+use super::prelude::*;
 use crate::db::{Events, Subscriptions, Tags};
 use crate::util;
 

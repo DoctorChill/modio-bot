@@ -1,7 +1,7 @@
 use modio::filter::prelude::*;
 use modio::games::{ApiAccessOptions, Statistics};
 
-use crate::commands::prelude::*;
+use super::prelude::*;
 use crate::util::ContentBuilder;
 
 enum Identifier {

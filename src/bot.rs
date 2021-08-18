@@ -8,7 +8,7 @@ use serenity::model::gateway::{Activity, Ready};
 use serenity::model::guild::GuildStatus;
 use serenity::prelude::*;
 
-use crate::commands::*;
+use crate::commands::prefix::*;
 use crate::config::Config;
 use crate::db::{load_blocked, load_settings};
 use crate::db::{DbPool, Settings, Subscriptions};

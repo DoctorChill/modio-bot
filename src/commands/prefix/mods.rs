@@ -6,7 +6,7 @@ use modio::games::{ApiAccessOptions, Game};
 use modio::mods::filters::Popular as PopularFilter;
 use modio::mods::{Mod, Statistics};
 
-use crate::commands::prelude::*;
+use super::prelude::*;
 
 #[command("mod")]
 #[description = "Search mods or show the details for a single mod."]

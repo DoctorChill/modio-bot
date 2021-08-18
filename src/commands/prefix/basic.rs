@@ -3,7 +3,7 @@ use serenity::framework::standard::macros::command;
 use serenity::framework::standard::Args;
 use serenity::model::channel::Message;
 
-use crate::commands::CommandResult;
+use super::CommandResult;
 use crate::db::Settings;
 
 #[command]

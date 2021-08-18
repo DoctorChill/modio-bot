@@ -14,7 +14,7 @@ use tokio::sync::mpsc;
 use tokio::time::Instant;
 use tracing::{debug, error, trace};
 
-use crate::commands::prelude::*;
+use crate::commands::prefix::prelude::*;
 use crate::db::Subscriptions;
 use crate::metrics::Metrics;
 use crate::util;
@@ -211,7 +211,7 @@ fn create_message<'a, 'b>(
     event: &EventType,
     m: &'b mut CreateMessage<'a>,
 ) -> &'b mut CreateMessage<'a> {
-    use crate::commands::mods::ModExt;
+    use crate::commands::prefix::mods::ModExt;
 
     let create_embed =
         |m: &'b mut CreateMessage<'a>, desc: &str, changelog: Option<(&str, String, bool)>| {
