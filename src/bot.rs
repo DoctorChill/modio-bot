@@ -6,9 +6,11 @@ use serenity::http::Http;
 use serenity::model::channel::Message;
 use serenity::model::gateway::{Activity, Ready};
 use serenity::model::guild::GuildStatus;
+use serenity::model::interactions::Interaction;
 use serenity::prelude::*;
 
 use crate::commands::prefix::*;
+use crate::commands::slash;
 use crate::config::Config;
 use crate::db::{load_blocked, load_settings};
 use crate::db::{DbPool, Settings, Subscriptions};
@@ -72,6 +74,12 @@ impl EventHandler for Handler {
         let game = Activity::playing(&format!("~help| @{} help", ready.user.name));
         ctx.set_activity(game).await;
     }
+
+    async fn interaction_create(&self, ctx: Context, interaction: Interaction) {
+        if let Interaction::ApplicationCommand(command) = interaction {
+            slash::handle_command(ctx, command).await;
+        }
+    }
 }
 
 use serenity::model::event::Event;
@@ -116,6 +124,10 @@ pub async fn initialize(
         Err(e) => panic!("Couldn't get application info: {}", e),
     };
 
+    let http = Http::new_with_token_application_id(&config.bot.token, *bot.as_u64());
+
+    slash::register_global_commands(&http).await?;
+
     let disabled = std::env::var("MODBOT_DISABLED_COMMANDS")
         .unwrap_or_default()
         .split(',')
@@ -145,6 +157,7 @@ pub async fn initialize(
         .help(&HELP);
 
     let client = Client::builder(&config.bot.token)
+        .application_id(*bot.as_u64())
         .event_handler(Handler)
         .raw_event_handler(Handler)
         .framework(framework)

@@ -30,8 +30,8 @@ tracing = "0.1"
 tracing-subscriber = "0.2"
 
 [dependencies.serenity]
-version = "0.10.5"
-features = ["collector"]
+version = "0.10.9"
+features = ["collector", "unstable_discord_api"]
 
 [dependencies.modio]
 version = "0.6"
