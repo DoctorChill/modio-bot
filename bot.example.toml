@@ -1,5 +1,5 @@
 [bot]
-token="OTI0NzkwNjgzMzU5OTE2MDYy.YcjscA._CcJCEPlXTlOGVUt2MyX_gGhtmQ"
+token="your token"
 database_url="/path/to/sqlite.db"
 
 [modio]
