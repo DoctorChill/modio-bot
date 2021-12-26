@@ -1,5 +1,5 @@
 [bot]
-token="your discord bot token"
+token="OTI0NzkwNjgzMzU5OTE2MDYy.YcjscA._CcJCEPlXTlOGVUt2MyX_gGhtmQ"
 database_url="/path/to/sqlite.db"
 
 [modio]
